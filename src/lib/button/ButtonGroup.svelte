@@ -30,14 +30,28 @@
 
 <div class={['button-group', `size-${size}`, { 'is-connected': connected }]}>
 	{#each items as item, i (i)}
-		<Button {...item} inButtonGroup {size} {width} {shape} inConnectedGroup={!!connected} />
+		<Button
+			{...item}
+			inButtonGroup
+			{size}
+			{width}
+			{shape}
+			{variant}
+			inConnectedGroup={!!connected}
+		/>
 	{/each}
 </div>
 
 <style>
 	.button-group {
 		display: flex;
+	}
 
+	.button-group.is-connected {
+		gap: 0.15rem;
+	}
+
+	.button-group:not(.is-connected) {
 		&.size-extra-small {
 			gap: 1.2rem;
 		}
@@ -50,16 +64,6 @@
 		&.size-large,
 		&.size-extra-large {
 			gap: 0.5rem;
-		}
-	}
-
-	.button-group.is-connected {
-		&.size-extra-small,
-		&.size-small,
-		&.size-medium,
-		&.size-large,
-		&.size-extra-large {
-			gap: 0.15rem;
 		}
 	}
 </style>
